@@ -1,0 +1,38 @@
+{
+  "id": "queryCompanies",
+  "parameters": [ "limit", "offset" ],
+  "query": "
+query queryCompanies(
+  $company_dataSource: Playercentral_mcg_qndmtj_PlayerCompany_DataSources!, 
+  $limit: BigInt, 
+  $offset: BigInt) {
+  playercentral_mcg_qndmtj_PlayerCompany(
+    dataSource: $company_dataSource
+    limit: $limit
+    offset: $offset
+  ) {
+    data {
+      descriptor
+      pccCompanyName
+      pccProfiles(
+        limit: 100
+        offset: 0
+      ) {
+        total
+      }
+      workdayID {
+        id
+      }
+    }
+    total
+  }
+}
+  ",
+  "variables": {
+    "company_dataSource": {
+      "playercentral_mcg_qndmtj_playerCompanies": {}
+    },
+    "limit": "<% limit %>",
+    "offset": "<% offset %>"
+  }
+}

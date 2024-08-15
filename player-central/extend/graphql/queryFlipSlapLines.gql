@@ -1,0 +1,37 @@
+{
+  "id": "queryFlipSlapLines",
+  "query": "
+    query queryPlayerFlipSlapLines(
+      $dataSource: Playercentral_mcg_qndmtj_PlayerFlipSlapLines_DataSources!, 
+      $limit: BigInt, 
+      $offset: BigInt
+    ) {
+      playercentral_mcg_qndmtj_PlayerFlipSlapLines(
+        dataSource: $dataSource
+        limit: $limit
+        offset: $offset
+      ) {
+        data {
+          descriptor
+          pfslGroup {
+            workdayID {
+              id
+            }
+            descriptor
+          }
+          pfslMessageLine
+          pfslMessageLineOrder
+          workdayID {
+            id
+          }
+        }
+        total
+      }
+    }
+  ",
+  "variables": {
+    "dataSource": {
+      "playercentral_mcg_qndmtj_playerFlipSlapLines": { }
+    }
+  }
+}

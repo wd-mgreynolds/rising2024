@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Workday</title>
+    <meta name="description" content="The power to build is yours." />
+
+    <meta name="siteid" content="us" />
+    <meta name="countryid" content="US" />
+    <meta name="country" content="United States" />
+    <meta name="Language" content="en" />
+
+    <meta charset="utf-8" />
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="stylesheet" media="all" href="css/leaderboard.css" />
+</head>
+
+<body>
+    <div id="lb-heading">
+        <div id="lb-top-left"><img src="images/leaderboard/top-left-workday.png" /></div>
+        <div id="lb-top-center"><img src="images/leaderboard/LeaderBoard.png" /></div>
+        <div id="lb-top-right"><img src="images/leaderboard/top-right-globes.png" /></div>
+    </div>
+    <div style="clear:both"><hr/></div>
+    <div id="lb-main">
+        <!-- Large block on the left of the main section -->
+        <div id="top10"></div>
+
+        <!-- Two small blocks on the right side of the main section -->
+        <div id="metricsContainer">
+            <div id="last5"></div>
+            <div id="topCompanies"></div>
+        </div>
+    </div>
+
+    <!--
+        Define a hidden pop-up to show a new racer just completed the race.
+    -->
+    <div id="newRace" class="modal">
+        <div id="newRacerContent" class="modal-content">
+            <table>
+                <tr>
+                    <td rowspan="3"><img src="images/leaderboard/flags-animation-954171903.gif" /></td>
+                    <td>
+                        <div id="newRacerName" class="newRacer"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="newRaceTime" class="newRacer"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="newRaceCompany" class="newRacer"></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="lastUpdate" style="margin-left: 500px; color: lightgray; clear: both">
+        <div id="refreshTime" style="float: left">Waiting for update</div>
+        <div id="refreshWarning" style="float: left; padding-left:20px; display: none">
+            <img src="images/leaderboard/warning.png" style="height: 16px"/>
+        </div>
+    </div>
+    <script src="js/leaderboard.js"></script>
+</body>
+
+</html>

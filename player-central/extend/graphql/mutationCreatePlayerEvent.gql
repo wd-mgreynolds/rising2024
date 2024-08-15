@@ -1,0 +1,42 @@
+{
+  "id": "mutationCreatePlayerEvent",
+  "parameters" : [ "profileId", "created", "begins", "ends", "elapsed", "status" ],
+  "query": "
+mutation createPlayerEvent($createPlayerEvent_input: Playercentral_mcg_qndmtj_PlayerEventsSummary_CreateInput!) {
+  playercentral_mcg_qndmtj_createPlayerEvent(
+    input: $createPlayerEvent_input
+  ) {
+    descriptor
+    pceBegins
+    pceCreated
+    pceElapsed
+    pceEnds
+    pceProfile {
+      descriptor
+      workdayID {
+        id
+      }
+    }
+    pceStatus
+    workdayID {
+      id
+    }
+  }
+}
+",
+  "variables": {
+    "createPlayerEvent_input": {
+      "pceCreated": "<% created %>",
+      "pceBegins" : "<% begins %>",
+      "pceEnds" : "<% ends %>",
+      "pceElapsed" : "<% elapsed %>",
+      "pceStatus": "<% status %>",
+      "pceProfile": {
+        "id": {
+          "id": "<% profileId %>",
+          "type": "WID"
+        }
+      }
+    }
+  }
+}

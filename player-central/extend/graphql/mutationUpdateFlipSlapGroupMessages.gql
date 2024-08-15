@@ -1,0 +1,40 @@
+{
+  "id": "mutationUpdateFlipSlapGroupMessages",
+  "parameters": [
+    "groupId", "messages"
+  ],
+  "query": "
+      mutation removeLinesupdateFlipSlapGroups(
+        $input: Playercentral_mcg_qndmtj_PlayerFlipSlapGroupsSummary_UpdateInput!, 
+        $groupId: IdentifierInput!) {
+        playercentral_mcg_qndmtj_updatePlayerFlipSlapGroups(
+          input: $input
+          playerFlipSlapGroupsId: $groupId
+        ) {
+          descriptor
+          pfsgDisplaySeconds
+          pfsgEnabled
+          pfsgGroupName
+          pfsgGroupOrder
+          pfsgMessages {
+            descriptor
+            workdayID {
+              id
+            }
+          }
+          workdayID {
+            id
+          }
+        }
+      }
+    ",
+  "variables": {
+    "input": {
+      "pfsgMessages": "<% messages %>"
+    },
+    "groupId": {
+      "id": "<% groupId %>",
+      "type": "WID"
+    }
+  }
+}

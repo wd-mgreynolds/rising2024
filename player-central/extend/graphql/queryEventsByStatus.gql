@@ -1,0 +1,56 @@
+{
+  "id": "queryEventsByStatus",
+  "parameters": [
+    "status"
+  ],
+  "query": "
+query queryPlayerEventByStatus(
+  $event_dataSource: Playercentral_mcg_qndmtj_PlayerEvent_DataSources!, 
+  $event_where: Playercentral_mcg_qndmtj_PlayerEvent_Criteria, 
+  $event_limit: BigInt, 
+  $event_offset: BigInt) {
+  playercentral_mcg_qndmtj_PlayerEvent(
+    dataSource: $event_dataSource
+    where: $event_where
+    limit: $event_limit
+    offset: $event_offset
+  ) {
+    data {
+      pceBegins
+      pceCreated
+      pceElapsed
+      pceEnds
+      pceProfile {
+        pcpCompany {
+          pccCompanyName
+          workdayID {
+            id
+          }
+          descriptor
+        }
+        pcpFullName
+        workdayID {
+          id
+        }
+      }
+      pceStatus
+      workdayID {
+        id
+      }
+    }
+    total
+  }
+}",
+  "variables": {
+    "event_dataSource": {
+      "playercentral_mcg_qndmtj_playerEvents": { }
+    },
+    "event_where": {
+      "pceStatus": {
+        "eq": "<% status %>"
+      }
+    },
+    "event_limit": 20,
+    "event_offset": 0
+  }
+}

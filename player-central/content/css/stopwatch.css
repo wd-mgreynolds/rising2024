@@ -1,0 +1,85 @@
+@font-face {
+    font-family: Stopwatch;
+    src: url("/fonts/Stopwatch.woff") format("woff");
+    line-gap-override: 0;
+    line-height: 0;
+}
+
+#mainstopwatch {
+    width: max-content;
+    padding: 25px 50px 50px;
+    background-color: white;
+    text-align: center;
+    border-radius: 38px;
+    box-shadow: 6px -6px 8px #9d9d9d, -6px 6px 8px #ffffff;
+    position: absolute;
+    top: 100px;
+    left: 525px;
+}
+
+.maintime {
+    color: #0776de;
+    font-size: 10em;
+    font-family: Stopwatch, monospace;
+    font-weight: bold;
+    line-height: 50px;
+}
+
+#mainminute,
+#mainsecond {
+    float: left;
+    margin: 3px;
+    padding: 10px;
+    border-radius: 38px;
+    border: 1px solid orange;
+    display: inline-block;
+    height: 200px;
+    width: 225px;
+    box-shadow: 6px -6px 8px #9d9d9d, -6px 6px 8px #ffffff;
+}
+
+#milliseconds {
+    float: left;
+    margin: 3px;
+    padding: 10px;
+    border-radius: 38px;
+    border: 1px solid orange;
+    display: inline-block;
+    height: 200px;
+    width: 300px;
+    box-shadow: 6px -6px 8px #9d9d9d, -6px 6px 8px #ffffff;
+}
+
+.maintime .separator {
+    float: left;
+    color: orange;
+}
+
+#mainstopwatch button:hover {
+    background: #333;
+    color: #e0e0e0;
+    border-radius: 38px;
+}
+
+.bigredbutton-container {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.bigredbutton-centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.bigredbutton-container .button-line-1 {
+    font-family: Stopwatch;
+    font-size: 2.5em;
+}
+
+.bigredbutton-container .button-line-2 {
+    font-family: Stopwatch;
+    font-size: 1em;
+}

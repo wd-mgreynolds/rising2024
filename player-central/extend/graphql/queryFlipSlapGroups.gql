@@ -1,0 +1,41 @@
+{
+  "id": "queryFlipSlapGroups",
+  "query": "
+      query playercentralFlipSlapGroups($dataSource: Playercentral_mcg_qndmtj_PlayerFlipSlapGroups_DataSources!) {
+        playercentral_mcg_qndmtj_PlayerFlipSlapGroups(
+          dataSource: $dataSource
+        ) {
+          data {
+            descriptor
+            pfsgDisplaySeconds
+            pfsgEnabled
+            pfsgGroupName
+            pfsgGroupOrder
+            pfsgMessages(
+              limit: 100
+              offset: 0
+            ) {
+              data {
+                pfslMessageLine
+                pfslMessageLineOrder
+                workdayID {
+                  id
+                }
+                descriptor
+              }
+              total
+            }
+            workdayID {
+              id
+            }
+          }
+          total
+        }
+      }
+    ",
+  "variables": {
+    "dataSource": {
+      "playercentral_mcg_qndmtj_playerFlipSlapGroups": { }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "id": "mutationCreatePlayerEvent",
+  "parameters" : [ "profileId", "companyId", "firstName", "lastName", "events" ],
+  "query": "
+    mutation updatePlayerProfile(
+    $input: Playercentral_mcg_qndmtj_PlayerProfilesSummary_UpdateInput!, 
+    $playerProfilesId: IdentifierInput!) {
+    playercentral_mcg_qndmtj_updatePlayerProfile(
+        input: $input
+        playerProfilesId: $playerProfilesId
+    ) {
+        descriptor
+        pcpCompany {
+        descriptor
+        workdayID {
+            id
+        }
+        }
+        pcpCompanyName
+        pcpEvents {
+        descriptor
+        workdayID {
+            id
+        }
+        }
+        pcpFirstName
+        pcpFullName
+        pcpLastName
+        workdayID {
+        id
+        }
+      }
+    }
+    ",
+
+  "variables": {
+    "input": {
+      "pcpCompany": {
+        "id": {
+          "id": "<% companyId %>",
+          "type": "WID"
+        }
+      },
+      "pcpEvents": "<% events %>",
+      "pcpFirstName": "<% firstName %>",
+      "pcpLastName": "<% lastName %>"
+    },
+    "playerProfilesId": {
+      "id": "<% profileId %>",
+      "type": "WID"
+    }
+  }
+}

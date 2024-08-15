@@ -1,0 +1,19 @@
+{
+  "id": "mutationDeleteFlipSlapGroup",
+  "parameters": [ "groupId" ],
+  "query": "
+    mutation deletePlayerFlipSlapGroups($groupId: IdentifierInput!) {
+      playercentral_mcg_qndmtj_deletePlayerFlipSlapGroups(
+          playerFlipSlapGroupsId: $groupId
+      ) {
+          ok
+        }
+      }
+    ",
+    "variables": {
+        "groupId": {
+            "id": "<% groupId %>",
+            "type": "WID"
+        }
+    }
+}

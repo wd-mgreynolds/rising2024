@@ -1,0 +1,8 @@
+[extend]
+server: api.workday.com
+app: {app}
+
+tenant_alias: {tenant}
+
+client_id: {clientId}
+client_secret: {clientSecret}

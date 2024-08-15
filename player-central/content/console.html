@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <title>Workday Game Console</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="images/favicon.ico" rel="shortcut icon">
+
+  <link href="css/console.css" rel="stylesheet">
+  <link href="css/stopwatch.css" rel="stylesheet">
+  <link href="css/modal.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Load, but do not play, the sound effects for button presses. -->
+  <audio id="soundBuzzer" src="sounds/buzzer.mp3"></audio>
+  <audio id="soundComplete" src="sounds/complete-chime.mp3"></audio>
+
+  <!-- 
+    Display the DevCon graphics around the outside of the window.  These
+    are "absolute"-ly positioned around the edges.
+  -->
+  <div id="dc-title" style="padding-top:10px; padding-right: 10px">
+    <img src="images/console-top-right.png" style="height: 75px" alt="Workday Title">
+  </div>
+  <div id="dc-top-left">
+    <img src="images/console-top-left.png" alt="Top-left image">
+  </div>
+  <div id="dc-bottom-left">
+    <img src="images/console-bottom-left.png" alt="Bottom-left image" style="width: 200px">
+  </div>
+  <div id="dc-right-side">
+    <img src="images/console-right-side.png" alt="Right-side image" style="height: 350px">
+  </div>
+
+  <div id="console" style="position: relative">
+    <div class="players">
+      <div class="playerPanel">
+        <div class="playerHeader">Now Playing</div>
+        <div class="playerCard playerCurrent">
+          <input class="playerEventId" type="hidden" value="none">
+          <input class="playerBegins" type="hidden" value="">
+          <input class="playerEnds" type="hidden" value="">
+          <input class="playerElapsed" type="hidden" value="0">
+          <input class="playerPlaying" type="hidden" value="false">
+
+          <div class="playerCompany">- - -</div>
+          <div class="playerName">Waiting for player</div>
+          <div class="playerTime">--:--:---</div>
+        </div>
+        <div class="playerHeader">Next Up</div>
+        <div class="playerCard playerNext">
+          <input class="playerEventId" type="hidden" value="none">
+          <div class="playerCompany">- - -</div>
+          <div class="playerName">Nobody waiting</div>
+        </div>
+        <div class="playerCard playerNext">
+          <input class="playerEventId" type="hidden" value="none">
+          <div class="playerCompany">- - -</div>
+          <div class="playerName">Nobody waiting</div>
+        </div>
+
+        <!--
+          Div to display an active timer about queue operations.
+        -->
+        <div id="playerQueueStatus" class="playerQueueStatus">
+          Queue Update: <span>-</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="mainstopwatch">
+      <div class="button-ops">
+        <div class="header">Button operations</div>
+        <div class="title">Single-click:</div>
+        <div id="singleClickMessage" class="message">- -</div>
+        <div class="title">Double-click:</div>
+        <div id="doubleClickMessage" class="message">- -</div>
+        <div class="title">Triple-click:</div>
+        <div id="tripleClickMessage" class="message">- -</div>
+      </div>
+      <div class="logo-right">
+        <img src="images/wd-dub.png" alt="Workday logo">
+      </div>
+      <div class="mainPlayerHeader">
+        Time to beat: <span id="bestTimeSpan">00:00.000</span>
+      </div>
+      <div class="maintime">
+        <div id="mainminute">00</div>
+        <div class="separator">:</div>
+        <div id="mainsecond">00</div>
+        <div class="separator">.</div>
+        <div id="milliseconds">000</div>
+      </div>
+
+      <div style="clear:both"></div>
+
+      <div class="bigredbutton-container">
+        <img src="images/console-red-button.png" alt="Big red button" style="width: 250px">
+        <div class="bigredbutton-centered">
+          <div id="bigRedButton" class="button-line-1">-</div>
+          <div id="bugRedButtonMsg" class="button-line-2">-</div>
+        </div>
+      </div>
+
+      <div class="button-clicks">
+        <div id="singlePressButton" class="button-style single">
+          <div class="button-line-1 button-text">-</div>
+          <div class="button-line-2">single press</div>
+        </div>
+        <div id="doublePressButton" class="button-style double">
+          <div class="button-line-1 button-text">-</div>
+          <div class="button-line-2">double press</div>
+        </div>
+        <div id="triplePressButton" class="button-style triple">
+          <div class="button-line-1 button-text"">-</div>
+          <div class=" button-line-2">triple press</div>
+        </div>
+        <div id="operationInProgress" class="button-style inprogress">
+          <div class="button-line-1 button-text"">Please wait...</div>
+          <div class=" button-line-2">no action</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal dialogs - hidden until needed. -->
+  <div id="confirmModal" class="modal">
+    <div class="modal-content">
+      <span id="confirmModalClose" class="close">&times;</span>
+      <div class="modalTitle">Congratulations!</div>
+      <div class="modalMessage"><b>Double-press</b> to save your time to the Workday Extend application.</div>
+      <div class="modalCompany" id="confirmCompany"></div>
+      <div class="modalName" id="confirmName"></div>
+      <div class="modalTime" id="confirmTime"></div>
+      <div class="button-clicks">
+        <div id="confirmModalCancel" class="button-style single" style="display: inline-block;">
+          <div class="button-line-1 button-text">Cancel</div>
+          <div class="button-line-2">single press</div>
+        </div>
+        <div id="confirmModalSubmit" class="button-style double" style="display: inline-block;">
+          <div class="button-line-1 button-text">Submit</div>
+          <div class="button-line-2">double press</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="requeueModal" class="modal">
+    <div class="modal-content">
+      <span id="requeueModalClose" class="close">&times;</span>
+      <div class="modalTitle">Requeue Player</div>
+      <div class="modalMessage"><b>Double-press</b> to put the current player back on the queue.</div>
+      <div class="modalCompany" id="requeueCompany"></div>
+      <div class="modalName" id="requeueName"></div>
+      <div class="button-clicks">
+        <div id="requeueModalCancel" class="button-style single" style="display: inline-block;">
+          <div class="button-line-1 button-text">Cancel</div>
+          <div class="button-line-2">single press</div>
+        </div>
+        <div id="requeueModalRequeue" class="button-style double" style="display: inline-block;">
+          <div class="button-line-1 button-text">Requeue</div>
+          <div class="button-line-2">double press</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="cancelModal" class="modal">
+    <div class="modal-content">
+      <span id="cancelModalClose" class="close">&times;</span>
+      <div class="modalTitle">Player Operation</div>
+      <div class="modalMessage">
+        <b>Double-press</b> to reset the playing time for the current player.
+        <b>Triple-press</b> to skip this player.
+      </div>
+      <div class="modalCompany" id="cancelCompany"></div>
+      <div class="modalName" id="cancelName"></div>
+      <div class="button-clicks">
+        <div id="cancelModalCancel" class="button-style single" style="display: inline-block;">
+          <div class="button-line-1 button-text">Cancel</div>
+          <div class="button-line-2">single press</div>
+        </div>
+        <div id="cancelModalReset" class="button-style double" style="display: inline-block;">
+          <div class="button-line-1 button-text">Reset Time</div>
+          <div class="button-line-2">double press</div>
+        </div>
+        <div id="cancelModalSkip" class="button-style triple" style="display: inline-block;">
+          <div class="button-line-1">Skip Player</div>
+          <div class="button-line-2">triple press</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/stopwatch.js"></script>
+  <script src="js/console.js"></script>
+  <script src="js/modal.js"></script>
+</body>
+
+</html>

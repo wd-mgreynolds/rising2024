@@ -1,0 +1,45 @@
+{
+  "id": "mutationEventStatus",
+  "parameters": [
+    "status", "begins", "ends", "elapsed", "id"
+  ],
+  "query": "
+mutation updatePlayerEvent(
+  $updatePlayerEvent_input: Playercentral_mcg_qndmtj_PlayerEventsSummary_UpdateInput!, 
+  $playerEventsId: IdentifierInput!
+) {
+  playercentral_mcg_qndmtj_updatePlayerEvent(
+    input: $updatePlayerEvent_input
+    playerEventsId: $playerEventsId
+  ) {
+    descriptor
+    pceBegins
+    pceCreated
+    pceElapsed
+    pceEnds
+    pceProfile {
+      descriptor
+      workdayID {
+        id
+      }
+    }
+    pceStatus
+    workdayID {
+      id
+    }
+  }
+}
+  ",
+  "variables": {
+    "updatePlayerEvent_input": {
+      "pceBegins": "<% begins %>",
+      "pceEnds": "<% ends %>",
+      "pceStatus": "<% status %>",
+      "pceElapsed" : "<% elapsed %>"
+    },
+    "playerEventsId": {
+      "id": "<% id %>",
+      "type": "WID"
+    }
+  }
+}

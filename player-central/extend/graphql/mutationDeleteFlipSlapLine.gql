@@ -1,0 +1,21 @@
+{
+  "id": "mutationDeleteFlipSlapLine",
+  "parameters": [
+    "lineId"
+  ],
+  "query": "
+      mutation deletePlayerFlipSlapLine($lineId: IdentifierInput!) {
+        playercentral_mcg_qndmtj_deletePlayerFlipSlapLines(
+          playerFlipSlapLinesId: $lineId
+        ) {
+          ok
+        }
+      }
+    ",
+  "variables": {
+    "lineId": {
+      "id": "<% lineId %>",
+      "type": "WID"
+    }
+  }
+}
