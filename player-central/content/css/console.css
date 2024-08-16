@@ -1,8 +1,6 @@
 @font-face {
-    font-family: Stopwatch;
-    src: url("/fonts/Stopwatch.woff") format("woff");
-    line-gap-override: 0;
-    line-height: 0;
+    font-family: Digital-7;
+    src: url("/fonts/digital-7.ttf") format("ttf");
 }
 
 html {
@@ -94,7 +92,7 @@ html {
 }
 
 .playerTime {
-    font-family: Stopwatch;
+    font-family: Digital-7;
     line-height: 0;
     font-size: 30px;
     position: absolute;
@@ -111,7 +109,7 @@ html {
     font-size: 3em;
     font-weight: bold;
     color: green;
-    font-family: Stopwatch, monospace;
+    font-family: Digital-7, monospace;
     line-height: 0px;
     margin-bottom: 60px;
     letter-spacing: .2em;

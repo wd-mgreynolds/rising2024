@@ -1,8 +1,6 @@
 @font-face {
-    font-family: Stopwatch;
-    src: url("/fonts/Stopwatch.woff") format("woff");
-    line-gap-override: 0;
-    line-height: 0;
+    font-family: Digital-7;
+    src: url("/fonts/digital-7.ttf") format("ttf");
 }
 
 #mainstopwatch {
@@ -19,14 +17,13 @@
 
 .maintime {
     color: #0776de;
-    font-size: 10em;
-    font-family: Stopwatch, monospace;
+    font-size: 12em;
+    font-family: Digital-7, monospace;
     font-weight: bold;
-    line-height: 50px;
+    line-height: 1;
 }
 
-#mainminute,
-#mainsecond {
+#mainminute, #mainsecond {
     float: left;
     margin: 3px;
     padding: 10px;
@@ -75,11 +72,11 @@
 }
 
 .bigredbutton-container .button-line-1 {
-    font-family: Stopwatch;
+    font-family: Digital-7;
     font-size: 2.5em;
 }
 
 .bigredbutton-container .button-line-2 {
-    font-family: Stopwatch;
+    font-family: Digital-7;
     font-size: 1em;
 }
