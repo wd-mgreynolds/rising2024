@@ -53,7 +53,7 @@ html {
 .playerName {
     font-weight: bold;
     text-overflow: ellipsis;
-    width: 225px;
+    width: 300px;
     overflow: hidden;
     white-space: nowrap;
 }
@@ -61,7 +61,7 @@ html {
 .playerCompany {
     font-style: italic;
     text-overflow: ellipsis;
-    width: 225px;
+    width: 300px;
     overflow: hidden;
     white-space: nowrap;
 }
@@ -92,12 +92,8 @@ html {
 }
 
 .playerTime {
-    font-family: Digital-7;
-    line-height: 0;
+    font-family: 'Courier New', monospace;
     font-size: 30px;
-    position: absolute;
-    right: 10px;
-    top: 30px
 }
 
 .playerQueueStatus {
@@ -106,12 +102,11 @@ html {
 }
 
 .mainPlayerHeader {
-    font-size: 3em;
+    font-size: 2em;
     font-weight: bold;
     color: green;
-    font-family: Digital-7, monospace;
-    line-height: 0px;
-    margin-bottom: 60px;
+    font-family: 'Courier New', monospace;
+    margin-bottom: 30px;
     letter-spacing: .2em;
 }
 

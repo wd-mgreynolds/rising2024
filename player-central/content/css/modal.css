@@ -73,8 +73,7 @@
 }
 
 .modalTime {
-    font-family: Digital-7, monospace;
+    font-family: 'Courier New', monospace;
     font-size: 4em;
-    line-height: .5em;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
 }
