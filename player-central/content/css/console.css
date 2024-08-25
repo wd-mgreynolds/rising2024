@@ -59,11 +59,11 @@ html {
 }
 
 .playerCompany {
-    font-style: italic;
     text-overflow: ellipsis;
     width: 300px;
     overflow: hidden;
     white-space: nowrap;
+    font-size: .65em;
 }
 
 .playerCard {
@@ -105,9 +105,8 @@ html {
     font-size: 2em;
     font-weight: bold;
     color: green;
-    font-family: 'Courier New', monospace;
+    font-family: Arial, sans-serif;
     margin-bottom: 30px;
-    letter-spacing: .2em;
 }
 
 .button-ops {

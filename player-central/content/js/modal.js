@@ -15,8 +15,8 @@ function confirmModalIsOpen() {
 
 function confirmModalOpen() {
   // Load the player information into the dialog.
-  confirmCompany.textContent = playerCompany.textContent;
-  confirmPlayer.textContent = playerName.textContent;
+  //confirmCompany.textContent = playerCompany.textContent;
+  //confirmPlayer.textContent = playerName.textContent;
   confirmTime.textContent = playerTime.textContent;
 
   // Show the modal dialog.
@@ -47,8 +47,8 @@ const requeueModal = document.getElementById("requeueModal");
 const requeueClose = document.getElementById("requeueModalClose");
 const requeueCancel = document.getElementById("requeueModalCancel");
 const requeueRequeue = document.getElementById("requeueModalRequeue");
-const requeueCompany = document.getElementById("requeueCompany");
-const requeuePlayer = document.getElementById("requeueName");
+//const requeueCompany = document.getElementById("requeueCompany");
+//const requeuePlayer = document.getElementById("requeueName");
 
 function requeueModalIsOpen() {
   return requeueModal.style.display === "block"
@@ -56,8 +56,8 @@ function requeueModalIsOpen() {
 
 function requeueModalOpen() {
   // Load the player information into the dialog.
-  requeueCompany.textContent = playerCompany.textContent;
-  requeuePlayer.textContent = playerName.textContent;
+  //requeueCompany.textContent = playerCompany.textContent;
+  //requeuePlayer.textContent = playerName.textContent;
 
   // Show the modal dialog.
   requeueModal.style.display = "block";
@@ -89,8 +89,8 @@ const cancelClose = document.getElementById("cancelModalClose");
 const cancelCancel = document.getElementById("cancelModalCancel");
 const cancelReset = document.getElementById("cancelModalReset");
 const cancelSkip = document.getElementById("cancelModalSkip");
-const cancelCompany = document.getElementById("cancelCompany");
-const cancelName = document.getElementById("cancelName");
+//const cancelCompany = document.getElementById("cancelCompany");
+//const cancelName = document.getElementById("cancelName");
 
 function cancelModalIsOpen() {
   // Load the player information into the dialog.
@@ -98,8 +98,8 @@ function cancelModalIsOpen() {
 }
 
 function cancelModalOpen() {
-  cancelCompany.textContent = playerCompany.textContent;
-  cancelName.textContent = playerName.textContent;
+  //cancelCompany.textContent = playerCompany.textContent;
+  //cancelName.textContent = playerName.textContent;
 
   cancelModal.style.display = "block";
 }

@@ -26,3 +26,6 @@ cd rising2024
 pip install -r requirements.txt
 
 cd player-central
+
+-- GET extend.ini for credentials
+

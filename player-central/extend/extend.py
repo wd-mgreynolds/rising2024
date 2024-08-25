@@ -42,6 +42,7 @@ class Extend:
         self.auth_uri = f"{self.api}/v1/authorize"
         self.app_url = f"{self.api}/apps/{self.app}/v1"
         self.graph_url = "https://api.workday.com/graphql/v1"
+        self.orch_url = f"{self.api}/orchestrate/v1/apps/{self.app}/orchestrations/"
 
         self.companies_url = f"{self.app_url}/playerCompanies"
         self.companies_bulk_url = f"{self.companies_url}?bulk=true"
@@ -123,6 +124,30 @@ class Extend:
                 break
 
             offset += 100
+
+        df = pd.DataFrame(objects)
+
+        return df
+
+    def get_all_rows_wql(self, query):
+        wql_query = urllib.parse.quote_plus(query.replace("\n","").strip())
+        
+        offset = 0
+        objects = []
+
+        while True:
+            page_url = self.wql_uri + f"/data?query={wql_query}&limit=10000&offset={offset}"
+
+            r = requests.get(page_url, headers=self.get_headers())
+            r.raise_for_status()
+
+            object_json = r.json()
+            objects.extend(object_json["data"])
+
+            if len(object_json["data"]) != 10000:
+                break
+
+            offset += 10000
 
         df = pd.DataFrame(objects)
 
@@ -266,6 +291,19 @@ class Extend:
 
     def get_profiles(self):
         return self.get_all_rows_rest(self.profiles_url)
+
+    def get_profiles_wql(self):
+        wql = f'''
+                select workdayID,
+                       pcpFirstName,
+                       pcpLastName,
+                       pcpCompanyName,
+                       pcpCompany,
+                       pcpEvents
+                from {self.app}_playerProfiles
+        '''
+        
+        return self.get_all_rows_wql(wql)
 
     def write_profile(self, profile):
         resp = requests.post(self.profiles_url, data=json.dumps(profile), headers=self.get_headers())
@@ -510,6 +548,12 @@ class Extend:
 
         updated_event = event_json["data"]["playercentral_mcg_qndmtj_updatePlayerEvent"]
 
+        # Now call the orchestration to update Prism.
+        url = self.orch_url + "LoadEventToPrism/launch"
+        data = { "eventID" : input_parameters["id"] }
+        r = requests.post(url, headers=headers, data=json.dumps(data))
+        r.raise_for_status()
+        
         return updated_event
 
     def delete_events(self):
