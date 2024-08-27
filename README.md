@@ -59,7 +59,7 @@ Result: **git version 2.42.0**
 
 # 3. Install Player Central
 
-### Create a directory
+## Create a directory
 Create a diretory for Player Central on the local device.
 
 **Windows**
@@ -74,21 +74,22 @@ Switch to the new directory to continue.
 
     cd pc
 
-### Copy the extend.ini file
+## Copy the extend.ini file
 
 Copy the **`extend.ini`** file with credentials into this directory.  Ensure the file is present by listing the directory contents.
 
-**Windows**
+***Windows***
 
     c:\pc> dir
 
-**MacOS / Linux**
+***MacOS / Linux***
 
     user@machine pc % ls   
     extend.ini	rising2024
 
-### Create the virtual environment
-Virtual environments must be activated before installing or using Player Central
+## Create the Python virtual environment
+
+Please note the period (.) on the last parameter - this must be {dot}venv.
 
 ***Windows***
 
@@ -98,15 +99,19 @@ Virtual environments must be activated before installing or using Player Central
 
     user@machine pc % python -m venv .venv
 
-### Activate the virtual environment
+## Activate the virtual environment
+
+Virtual environments must be activated before installing or using Player Central.
 
 ***Windows***
+
+Note the leading period and space before the *.venv* command.
 
     c:\pc> .venv\Scripts\activate
 
 ***MacOS***
 
-Note the leading period and space before the *.venv* command.
+Note both the leading **period and space** before the *.venv* command and the period before **venv**.
 
     user@machine pc % . .venv/bin/activate
 
@@ -126,15 +131,38 @@ Results:
     Receiving objects: 100% (195/195), 7.57 MiB | 15.71 MiB/s, done.
     Resolving deltas: 100% (49/49), done.
 
-A new directory has been created.
+A new directory has been created - switch to the new directory.
 
     c:\pc> cd rising2024
+
+## Install required Python packages
 
 Player Central requires specific Python packages (libraries) to be available.  Install them into the virtural environment.
 
     c:\pc\rising2024> pip install -r requirements.txt
 
-cd player-central
+A number of messages should go by indicating the packages are being installed.
 
--- GET extend.ini for credentials
+## Start Player Central
 
+***Windows***
+
+    c:\pc\rising2024> start-pc
+
+***MacOS / Linux***
+
+    user@machine rising2024 % ./start-pc.sh
+
+Do not close the current this window.
+
+     * Serving Flask app 'player-central/player-central.py'
+    * Debug mode: off
+    WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+    * Running on all addresses (0.0.0.0)
+    * Running on http://127.0.0.1:8000
+    * Running on http://10.78.144.120:8000
+    Press CTRL+C to quit
+
+# Access the Player Console
+
+    http://localhost:8000
