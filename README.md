@@ -166,3 +166,25 @@ Do not close the current this window.
 # Access the Player Console
 
     http://localhost:8000
+
+# What happens next...
+
+To restart Player Central ensure to set the Python virtual environment before starting the process.
+
+For example:
+
+***Windows***
+
+    {start terminal}
+    c:\> cd pc
+    c:\pc> .venv/Scripts/activate
+    c:\pc> cd rising2024
+    c:\pc\rising2024> start-pc
+
+***Linux***
+
+    {start terminal}
+    user@machine ~ % cd pc
+    user@machine pc % . .venv/bin/activate
+    user@machine pc % cd rising2024
+    user@machine rising2024 % ./start-pc.sh
