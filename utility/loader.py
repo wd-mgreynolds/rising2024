@@ -151,7 +151,7 @@ for index, profile in profiles.iterrows():
     companies[company_id].append({"id": profile["id"]})
 
 # Loop over the companies and update the multi-instance
-# of profiles.
+# of profiles, i.e., each company has zero or more profiles.
 
 bulk_data = {"data": []}
 

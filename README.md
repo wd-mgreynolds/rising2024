@@ -1,3 +1,15 @@
+Extend Application
+------------------
+Link: https://wcpdev.wd101.myworkday.com/wdayea_wcpdev38/d/wday/app/playercentral_mcg_qndmtj/playercentral_mcg_qndmtj.htmld
+
+User/Pass: lmcneil / 3xt3nd4Fun38!
+
+Prism Instance
+--------------
+Link: https://sales100.wd99.myworkday.net/wday/authgwy/mgreygms0102v2024r1/login.htmld
+
+User/Pass: lmcneil / {weekly sales password}
+
 Verify Python/Git
 
 python -V
