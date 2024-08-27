@@ -1,41 +1,138 @@
-Extend Application
-------------------
+# 1. Workday Tenants
+
+## Extend Application
+
 Link: https://wcpdev.wd101.myworkday.com/wdayea_wcpdev38/d/wday/app/playercentral_mcg_qndmtj/playercentral_mcg_qndmtj.htmld
 
-User/Pass: lmcneil / 3xt3nd4Fun38!
+User/Pass: lmcneil / {wdayea_wcpdev38 password}
 
-Prism Instance
---------------
+## Prism Instance
+
 Link: https://sales100.wd99.myworkday.net/wday/authgwy/mgreygms0102v2024r1/login.htmld
 
 User/Pass: lmcneil / {weekly sales password}
 
-Verify Python/Git
+## Credentials
 
-python -V
-Result: Python 3.12.0
+Locate the **`extend.ini`** file containing the Extend credentials.
 
-git -v
-git version 2.42.0
+For example:
 
-Install Software
+    [extend]
+    server: api.workday.com
+    app: playercentral_mcg_qndmtj
 
-mkdir pc
-cd pc
+    tenant_alias: wdayea_wcpdev38
 
-python -m venv .venv
+    client_id: {client id from Extend API }
+    client_secret: {client secret from Extend API}
 
--- MacOS
-. .venv/bin/activate
+# 2. Software Requirements
 
--- Windows
-.venv\Scripts\activate
+Verify Python and Git are available at the command line.
 
+## Python
 
-git clone https://github.com/wd-mgreynolds/rising2024.git
+**Windows**
 
-cd rising2024
-pip install -r requirements.txt
+    c:\> python -V
+
+or
+
+**MacOS / Linux**
+
+    user@machine ~ % python -V
+
+Result: **Python 3.12.0**
+
+## Git Client
+
+**Windows**
+
+    c:\> git -v
+
+**MacOS / Linux**
+
+    user@machine ~ % git -v
+
+Result: **git version 2.42.0**
+
+# 3. Install Player Central
+
+### Create a directory
+Create a diretory for Player Central on the local device.
+
+**Windows**
+
+    c:\> mkdir pc
+
+**MacOS / Linux**
+
+    user@machine ~ % mkdir pc
+
+Switch to the new directory to continue.
+
+    cd pc
+
+### Copy the extend.ini file
+
+Copy the **`extend.ini`** file with credentials into this directory.  Ensure the file is present by listing the directory contents.
+
+**Windows**
+
+    c:\pc> dir
+
+**MacOS / Linux**
+
+    user@machine pc % ls   
+    extend.ini	rising2024
+
+### Create the virtual environment
+Virtual environments must be activated before installing or using Player Central
+
+***Windows***
+
+    c:\pc> python -m venv .venv
+
+***MacOS / Linux***
+
+    user@machine pc % python -m venv .venv
+
+### Activate the virtual environment
+
+***Windows***
+
+    c:\pc> .venv\Scripts\activate
+
+***MacOS***
+
+Note the leading period and space before the *.venv* command.
+
+    user@machine pc % . .venv/bin/activate
+
+## Get Player Central from GitHub
+
+The following command retrieves the Player Cental Python application from the GitHub repository.
+
+    git clone https://github.com/wd-mgreynolds/rising2024.git
+
+Results:
+
+    Cloning into 'rising2024'...
+    remote: Enumerating objects: 195, done.
+    remote: Counting objects: 100% (195/195), done.
+    remote: Compressing objects: 100% (157/157), done.
+    remote: Total 195 (delta 49), reused 181 (delta 35), pack-reused 0 (from 0)
+    Receiving objects: 100% (195/195), 7.57 MiB | 15.71 MiB/s, done.
+    Resolving deltas: 100% (49/49), done.
+
+A new directory has been created.
+
+    c:\pc> cd rising2024
+
+Player Central requires specific Python packages (libraries) to be available.  Install them into the virtural environment.
+
+    c:\pc\rising2024> pip install -r requirements.txt
 
 cd player-central
 

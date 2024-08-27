@@ -1,4 +1,4 @@
 #!/bin/bash
 
-export EXTEND_INI=
+export EXTEND_INI=../extend.ini
 flask --app player-central.py run --host=0.0.0.0 --port 8000
