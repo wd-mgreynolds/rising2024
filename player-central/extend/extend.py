@@ -546,13 +546,18 @@ class Extend:
 
         event_json = r.json()
 
+        # Pull out the info to send back to caller
         updated_event = event_json["data"]["playercentral_mcg_qndmtj_updatePlayerEvent"]
 
-        # Now call the orchestration to update Prism.
-        url = self.orch_url + "LoadEventToPrism/launch"
-        data = { "eventID" : input_parameters["id"] }
-        r = requests.post(url, headers=headers, data=json.dumps(data))
-        r.raise_for_status()
+        # If the udpate sets the event as "Played" then invoke
+        # the Extend Orch to push the event to Prism.
+        
+        if input_parameters["status"] == "Played":
+            url = self.orch_url + "LoadEventToPrism/launch"
+            data = { "eventID" : input_parameters["id"] }
+            
+            r = requests.post(url, headers=headers, data=json.dumps(data))
+            r.raise_for_status()
         
         return updated_event
 
