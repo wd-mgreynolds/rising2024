@@ -550,7 +550,8 @@ class Extend:
         updated_event = event_json["data"]["playercentral_mcg_qndmtj_updatePlayerEvent"]
 
         # If the udpate sets the event as "Played" then invoke
-        # the Extend Orch to push the event to Prism.
+        # the Extend Orch to push the event to Prism.  Note:
+        # events can also change to/from Queued to Playing.
         
         if input_parameters["status"] == "Played":
             url = self.orch_url + "LoadEventToPrism/launch"

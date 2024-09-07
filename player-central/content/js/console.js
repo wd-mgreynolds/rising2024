@@ -147,6 +147,7 @@ function resetPlayer() {
     playerTime.textContent = "00:00.000";
     playerElapsed.value = 0;
 
+    playCompleteSound();
     resetStopWatch();
     cancelModalClose();
 }
@@ -272,6 +273,7 @@ function stopPlaying() {
     playerPlaying.value = "false";
 
     // Stop updating the stop watch.
+    playBuzzerSound();
     clearInterval(timerInterval);
 }
 
@@ -281,13 +283,11 @@ function submitTime() {
     // everytime the clock stops.
     playerEnds.value = new Date().toISOString();
 
-    // Ensure we stop the clock.
-    stopPlaying();
+    // Throw up the modal to confirm.
     confirmModalOpen();
 }
 
 function resetPlay() {
-    stopPlaying();
     cancelModalOpen();
 }
 

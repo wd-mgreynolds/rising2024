@@ -30,6 +30,7 @@ function startPlaying() {
 
     // Let the button manager know the timer is running.
     playerPlaying.value = "true";
+    playCompleteSound();
 
     // Always measure time based on microsecond since we started
     // the timer.  Originally, we counted setTimout expirations
@@ -59,7 +60,7 @@ let pressCount = 0;
 const handleSinglePress = () => {
     // Check for any modal windows - they get
     // dismissed first.  Single-press on the
-    // modal dialogs = "Cancel".
+    // all modal dialogs = "Cancel".
 
     if (confirmModalIsOpen()) {
         confirmModalClose();
@@ -69,7 +70,6 @@ const handleSinglePress = () => {
         requeueModalClose();
     } else {
         // Run whatever is loaded as onclick.
-        playBuzzerSound();
         singlePressButton.onclick.call();
     }
 }
@@ -86,7 +86,6 @@ const handleDoublePress = () => {
         updateElapsedTime();
     } else {
         // Run whatever is loaded as onclick.
-        playBuzzerSound();
         doublePressButton.onclick.call()
     }
 }
@@ -101,11 +100,6 @@ const handleTriplePress = key => {
         // the player from the main page.
         cancelModalOpen();
      } else {
-        // The game is running and the user triple-clicked - open
-        // the cancel dialog.
-
-        stopPlaying();
-        playBuzzerSound();
         cancelModalOpen();
     }
 }

@@ -60,7 +60,7 @@ Result: **git version 2.42.0**
 # 3. Install Player Central
 
 ## Create a directory
-Create a diretory for Player Central on the local device.
+Create a directory for Player Central on the local device.
 
 **Windows**
 
@@ -85,9 +85,13 @@ Copy the **`extend.ini`** file with credentials into this directory.  Ensure the
 ***MacOS / Linux***
 
     user@machine pc % ls   
-    extend.ini	rising2024
+    extend.ini
 
 ## Create the Python virtual environment
+
+Python virtual environments allow you to install Python packages in a location isolated from the rest of your system instead of installing them system-wide.  Using virtual environments makes it very easy to remove all traces of Player Central without affecting other Python activities.
+
+***IMPORTANT:*** Only setup the virtual environment once during initial installation.
 
 Please note the period (.) on the last parameter - this must be {dot}venv.
 
@@ -103,33 +107,40 @@ Please note the period (.) on the last parameter - this must be {dot}venv.
 
 Virtual environments must be activated before installing or using Player Central.
 
+**IMPORTANT**: The activate step MUST be preformed from the same directory of the virtual environment command (see above), e.g., c:\pc> directory.
+
 ***Windows***
 
-Note the leading period and space before the *.venv* command.
+Note the leading period of the *.venv* command.
 
     c:\pc> .venv\Scripts\activate
 
 ***MacOS***
 
-Note both the leading **period and space** before the *.venv* command and the period before **venv**.
+Note the leading period of the *.venv* command.
 
-    user@machine pc % . .venv/bin/activate
+<pre>
+user@machine pc % <b>source .venv</b>/bin/activate
+</pre>
 
 ## Get Player Central from GitHub
 
 The following command retrieves the Player Cental Python application from the GitHub repository.
 
-    git clone https://github.com/wd-mgreynolds/rising2024.git
+<pre>
+c:\pc> <b>git clone</b> https://github.com/wd-mgreynolds/rising2024.git
+</pre>
 
 Results:
 
-    Cloning into 'rising2024'...
-    remote: Enumerating objects: 195, done.
-    remote: Counting objects: 100% (195/195), done.
-    remote: Compressing objects: 100% (157/157), done.
-    remote: Total 195 (delta 49), reused 181 (delta 35), pack-reused 0 (from 0)
-    Receiving objects: 100% (195/195), 7.57 MiB | 15.71 MiB/s, done.
-    Resolving deltas: 100% (49/49), done.
+<pre>
+<b>Cloning into 'rising2024'...</b>
+remote: Enumerating objects: 195, done.
+remote: Counting objects: 100% (195/195), done.remote: Compressing objects: 100% (157/157), done.
+remote: Total 195 (delta 49), reused 181 (delta 35), pack-reused 0 (from 0)
+Receiving objects: 100% (195/195), 7.57 MiB | 15.71 MiB/s, done.
+Resolving deltas: 100% (49/49), done.
+</pre>
 
 A new directory has been created - switch to the new directory.
 
@@ -139,9 +150,13 @@ A new directory has been created - switch to the new directory.
 
 Player Central requires specific Python packages (libraries) to be available.  Install them into the virtural environment.
 
-    c:\pc\rising2024> pip install -r requirements.txt
+<pre>
+c:\pc\rising2024> <b>pip install</b> -r requirements.txt
+</pre>
 
 A number of messages should go by indicating the packages are being installed.
+
+***IMPORTANT:*** Only use the **pip** command when setting up the initial environment.
 
 ## Start Player Central
 
@@ -177,7 +192,7 @@ For example:
 
     {start terminal}
     c:\> cd pc
-    c:\pc> .venv/Scripts/activate
+    c:\pc> .venv\Scripts\activate
     c:\pc> cd rising2024
     c:\pc\rising2024> start-pc
 
@@ -188,3 +203,31 @@ For example:
     user@machine pc % . .venv/bin/activate
     user@machine pc % cd rising2024
     user@machine rising2024 % ./start-pc.sh
+
+# Updating Player Central from Github
+
+Use the following Git **pull** command to update the environment with updates from Git.
+
+**IMPORTANT**: The Git command is run from the **rising2024** directory.
+
+***Windows***
+
+<pre>
+{start terminal}
+c:\> cd pc
+c:\pc> .venv\Scripts\activate
+c:\pc> cd <b>rising2024</b>
+c:\pc\rizing2024> git pull https://github.com/wd-mgreynolds/rising2024.git
+c:\pc\rising2024> start-pc
+</pre>
+
+***Linux***
+
+<pre>
+{start terminal}
+user@machine ~ % cd pc
+user@machine pc % . .venv/bin/activate
+user@machine pc % cd <b>rising2024</b>
+user@machine rising2024 % git pull https://github.com/wd-mgreynolds/rising2024.git
+user@machine rising2024 % ./start-pc.sh
+</pre>
